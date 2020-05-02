@@ -1,0 +1,6 @@
+{
+  "name": "Node.js Socket.io hipmove-live",
+  "description": "Try to start WebSockets like Heroku Tutorial",
+  "repository": "https://github.com/thomasvano/hipmove-live",
+  "keywords": ["node", "websocket", "socket.io"]
+}
