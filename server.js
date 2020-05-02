@@ -4,19 +4,15 @@ const express = require("express")
 const socketIO = require('socket.io');
 
 const PORT = process.env.PORT || 3000;
+const INDEX = '/';
 
 const server = express()
+  .get('/', (req, res) => { return res.json({ message: 'Hello world1' }) })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 const io = socketIO(server)
 
 let rooms = []
-
-app.get('/', (req, res) => {
-  return res.json({
-    message: 'Hello world1'
-  })
-})
 
 io.on("error", e => console.log(e))
 io.on("connection", socket => {
