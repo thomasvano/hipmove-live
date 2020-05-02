@@ -1,22 +1,15 @@
 const express = require("express")
-const app = express()
-const port = 4000
+const socketIO = require('socket.io');
 
-const http = require("http")
-const server = http.createServer(app)
+const PORT = process.env.PORT || 3000;
+const INDEX = '/';
 
-const io = require("socket.io")(server)
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-/*
-  Eg: rooms = [
-    {
-      id: 123456,
-      participants: ['socket_id_1', 'socket_id_2']
-    }
-  ]
+const io = socketIO(server)
 
-  A room can only have maximum 2 participants
-*/
 let rooms = []
 
 app.get('/', (req, res) => {
@@ -119,5 +112,3 @@ function removeUserFromRoom(id) {
     }
   })
 }
-
-server.listen(port, () => console.log(`Server is running on port ${port}`))
