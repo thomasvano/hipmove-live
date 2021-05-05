@@ -12,5 +12,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^2.4.0"
+  },
+  "devDependencies": {
+  "xmlhttprequest-ssl": ">=1.6.2"
   }
 }
